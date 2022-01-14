@@ -4,7 +4,7 @@ import { ICreateUserDTO } from '../../dtos/ICreateUserDTO';
 import { IUserRepository } from '../../repositories/IUserRepository';
 
 @injectable()
-class createUserService {
+class CreateUserService {
   constructor(
     @inject('UserRepository')
     private userRepository: IUserRepository,
@@ -14,11 +14,12 @@ class createUserService {
     const userAlreadyExists = await this.userRepository.findByEmail(email);
 
     if (userAlreadyExists) {
-      throw new Error('User already exists.');
+      throw new Error('User already existsss.');
     }
     const hashedPassword = await hash(password, 8);
+
     await this.userRepository.create({ name, email, password: hashedPassword });
   }
 }
 
-export { createUserService };
+export { CreateUserService };

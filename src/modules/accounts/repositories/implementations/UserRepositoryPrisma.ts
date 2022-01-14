@@ -1,6 +1,5 @@
 import { User } from '../../entities/User';
 import { IUserRepository } from '../IUserRepository';
-import { ICreateUserDTO } from '../../../accounts/dtos/ICreateUserDTO';
 import prisma from '../../../../config/PrismaClient';
 
 class UserRepositoryPrisma implements IUserRepository {
@@ -42,7 +41,7 @@ class UserRepositoryPrisma implements IUserRepository {
   }
 
   async update(id: string, { name, email, password }: User): Promise<void> {
-    const user = await prisma.user.update({
+    await prisma.user.update({
       where: {
         id,
       },

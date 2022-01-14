@@ -22,5 +22,6 @@ module.exports = {
     'class-methods-use-this': 'off',
     'no-useless-constructor': 'off',
     'no-empty-function': 'off',
+    'max-len': 'off',
   },
 };
