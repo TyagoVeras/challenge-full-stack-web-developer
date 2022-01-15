@@ -21,9 +21,9 @@ services:
     container_name: desafio-api
     restart: always
     ports:
-      - "8080:8080"
+      - "3333:3333"
     volumes:
-      - .:/usr/app
+      - .:/usr/desafio
     links:
       - database-service
     depends_on:
