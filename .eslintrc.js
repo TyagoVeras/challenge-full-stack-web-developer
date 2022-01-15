@@ -23,5 +23,6 @@ module.exports = {
     'no-useless-constructor': 'off',
     'no-empty-function': 'off',
     'max-len': 'off',
+    'linebreak-style': 'off',
   },
 };

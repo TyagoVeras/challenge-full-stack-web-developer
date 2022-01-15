@@ -7,6 +7,8 @@ interface IUserRepository {
 
   findById(id: string): Promise<User | undefined>;
 
+  findAll(): Promise<User[]>
+
   delete(id: string): Promise<void>;
 
   update(id: string, { name, email }: User): Promise<void>;
