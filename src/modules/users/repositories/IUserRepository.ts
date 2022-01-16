@@ -1,7 +1,9 @@
 import { User } from '../entities/User';
 
 interface IUserRepository {
-  create({ name, email, password }: User): Promise<void>;
+  create({
+    name, email, password, isAdmin,
+  }: User): Promise<void>;
 
   findByEmail(email: string): Promise<User | undefined>;
 

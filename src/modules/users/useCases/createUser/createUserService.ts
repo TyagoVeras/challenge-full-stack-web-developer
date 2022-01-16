@@ -1,6 +1,6 @@
 import { hash } from 'bcrypt';
 import { inject, injectable } from 'tsyringe';
-import { ICreateUserDTO } from '../../dtos/ICreateUserDTO';
+import { ICreateUserDTO } from '../../dtos/IUserDTO';
 import { IUserRepository } from '../../repositories/IUserRepository';
 
 @injectable()
@@ -10,7 +10,12 @@ class CreateUserService {
     private userRepository: IUserRepository,
   ) {}
 
-  async execute({ name, email, password }: ICreateUserDTO): Promise<void> {
+  async execute({
+    name,
+    email,
+    password,
+    isAdmin,
+  }: ICreateUserDTO): Promise<void> {
     const userAlreadyExists = await this.userRepository.findByEmail(email);
 
     if (userAlreadyExists) {
@@ -18,7 +23,16 @@ class CreateUserService {
     }
     const hashedPassword = await hash(password, 8);
 
-    await this.userRepository.create({ name, email, password: hashedPassword });
+    // check if user is admin
+    let isAdminBoolean = false;
+    if (isAdmin === 'true') { isAdminBoolean = true; }
+
+    await this.userRepository.create({
+      name,
+      email,
+      password: hashedPassword,
+      isAdmin: isAdminBoolean,
+    });
   }
 }
 

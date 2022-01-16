@@ -1,11 +1,7 @@
 import { inject, injectable } from 'tsyringe';
+import { IResponseUserDTO } from '../../dtos/IUserDTO';
 import { IUserRepository } from '../../repositories/IUserRepository';
 
-interface IResponse{
-  id: string;
-  name: string;
-  email: string;
-}
 @injectable()
 class ListAllUsersService {
   constructor(
@@ -13,13 +9,17 @@ class ListAllUsersService {
     private userRepository: IUserRepository,
   ) {}
 
-  async execute(): Promise<IResponse[]> {
+  async execute(): Promise<IResponseUserDTO[]> {
     const users = await this.userRepository.findAll();
-    return users.map((user) => ({
+
+    const listUsers = users.map((user) => ({
       id: user.id,
       name: user.name,
       email: user.email,
+      isAdmin: user.isAdmin,
     }));
+
+    return listUsers;
   }
 }
 export { ListAllUsersService };

@@ -3,12 +3,15 @@ import { IUserRepository } from '../IUserRepository';
 import prisma from '../../../../config/PrismaClient';
 
 class UserRepositoryPrisma implements IUserRepository {
-  async create({ name, email, password }: User): Promise<void> {
+  async create({
+    name, email, password, isAdmin,
+  }: User): Promise<void> {
     await prisma.user.create({
       data: {
         name,
         email,
         password,
+        isAdmin,
       },
     });
   }

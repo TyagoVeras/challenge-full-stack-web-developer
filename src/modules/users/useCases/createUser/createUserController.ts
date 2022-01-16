@@ -4,11 +4,15 @@ import { CreateUserService } from './createUserService';
 
 class CreateUserController {
   async handle(req: Request, res: Response): Promise<Response> {
-    const { name, email, password } = req.body;
+    const {
+      name, email, password, isAdmin,
+    } = req.body;
 
-    const createUser = container.resolve(CreateUserService);
+    const createUserService = container.resolve(CreateUserService);
 
-    await createUser.execute({ name, email, password });
+    await createUserService.execute({
+      name, email, password, isAdmin,
+    });
 
     return res.status(201).json();
   }

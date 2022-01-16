@@ -1,6 +1,6 @@
 import { hash } from 'bcrypt';
 import { inject, injectable } from 'tsyringe';
-import { ICreateUserDTO } from '../../dtos/ICreateUserDTO';
+import { ICreateUserDTO } from '../../dtos/IUserDTO';
 import { IUserRepository } from '../../repositories/IUserRepository';
 
 @injectable()
