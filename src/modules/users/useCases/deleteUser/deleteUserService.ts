@@ -4,7 +4,7 @@ import { IUserRepository } from '../../repositories/IUserRepository';
 @injectable()
 class DeleteUserService {
   constructor(
-    @inject('UsersRepository')
+    @inject('UserRepository')
     private usersRepository: IUserRepository,
   ) {}
 
