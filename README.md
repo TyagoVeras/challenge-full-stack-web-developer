@@ -36,8 +36,8 @@ DATABASE_URL='mysql://USER@localhost:3306/DATABASE?schema=public'
 DATABASE_URL='mysql://root@localhost:3306/desafio?schema=public'
 
 ```
+
 --------------------------------------
-# END CONFIG DATABASE
 
 ### Run migrate
 ```
